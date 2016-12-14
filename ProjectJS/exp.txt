@@ -1,0 +1,23 @@
+hello!
+var firstBodyChild = document.body.children[0];
+$( 'li', firstBodyChild );
+
+null
+firstBodyChild
+
+----------------
+
+var listItems = $( 'li' );
+var rawListItem = listItems[0]; // или listItems.get( 0 )
+var html = rawListItem.innerHTML; // - VM259:3 Uncaught TypeError: Cannot read property 'innerHTML' of undefined(Е)
+
+----------------
+
+var listItems = $( 'li' );
+var secondListItem = listItems.eq( 1 ); // VM262:2 Uncaught TypeError: listItems.eq is not a function(Е)
+secondListItem.remove();
+
+-----------------
+
+
+
