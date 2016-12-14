@@ -1,8 +1,20 @@
 <html>
-	<head>  </head>
+	<head>
+		<script src="jquery-3.1.1.min.js"></script>
+	</head>
 	
 	<body>
 		<h1>some text here</h1>
+		
+		<ul>
+			<li>
+			<span>
+				<i>Foo</i>
+			</span>
+			</li>
+			<li>Bar</li>
+		</ul>
+
 		
 		<ul>
 			<li>Coffee</li>
@@ -10,6 +22,13 @@
 			<li>Milk</li>
 		</ul>
 
+		<script>
+			$( document ).ready(function() {
+			console.log( 'готов!' );
+			alert("inner function!");
+			});
+		</script>
+		
 		<script src='my1script.js'></script>
 
 		<h3>and once again</h3>

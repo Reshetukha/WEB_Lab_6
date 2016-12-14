@@ -19,5 +19,86 @@ secondListItem.remove();
 
 -----------------
 
+$( '<p>' ); // создание нового элемента <p> без содержимого
+$( '<p>Привет!</p>' ); // создание нового элемента <p> с текстом
+$( '<p class="greet">Привет!</p>' ); // создание нового элемента <p> с текстом и классом
+
+-----------------
+
+var listItems = $( 'li' );
+var rawListItem = listItems[0]; // или listItems.get( 0 )
+var html = rawListItem.innerHTML;
+
+$( 'li' ).eq( 0 ).is( '.special' ); // false
+$( 'li' ).eq( 1 ).is( '.special' ); // true
+
+x
+-----------------
+
+$( 'li' ).html( 'Новый HTML' );
+
+$( 'li' ).html(function( index, oldHtml ) {
+  return oldHtml + '!!!'
+});
+
+-----------------
+
+var listItems = $( 'li' );
+
+// фильтровать выборку только для элементов с классом special
+var special = listItems.filter( '.special' );
+
+// фильтровать выборку только для элементов без класса special
+var notSpecial = listItems.not( '.special' );
+
+// фильтровать выборку только для элементов содержащих <span>
+var hasSpans = listItems.has( 'span' );
+
+----------------
+
+var listItem = $( 'li' ).first(); // и .last()
+
+----------------
+
+// Получить родственные элементы этого пункта списка
+var siblings = listItem.siblings();
+  
+// Получить следующего родственника этого пункта списка
+var nextSibling = listItem.next(); // и .prev()
+  
+// Получить родителя этого пункта списка
+var list = listItem.parent();
+
+// Получить пункты списка являющихся непосредственными потомками list
+var listItems = list.children();
+
+// Получить ВСЕ пункты списка из list, включая вложенные
+var allListItems = list.find( 'li' );
+
+// Найти всех предков этого пункта списка с классом module
+var modules = listItem.parents( '.module' );
+
+// Найти ближайшего предка этого пункта списка с классом module
+var module = listItem.closest( '.module' );
+
+----------------
+
+$( 'li' ).addClass( 'hidden' );
+$( 'li' ).eq( 1 ).removeClass( 'hidden' );
+
+$( 'li' ).eq( 1 ).toggleClass( 'hidden' );
+
+----------------
+
+$( 'li' ).eq( 1 ).css({
+  'font-size': '20px',
+  'padding-left': '20px'
+});
+
+----------------
+
+
+
+
 
 
