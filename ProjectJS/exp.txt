@@ -97,6 +97,93 @@ $( 'li' ).eq( 1 ).css({
 
 ----------------
 
+$( 'li' ).click(function( event ) {
+  console.log( 'clicked', $( this ).text() );
+});
+
+----------------
+
+$( 'li' ).on( 'click', function( event ) {
+  console.log( 'clicked', $( this ).text() );
+});
+
+----------------
+
+$( 'li' ).on( 'click', function( event ) {
+  console.log( 'clicked', $( this ).text() );
+});
+
+----------------
+
+$( 'li' ).off( 'click' );
+
+----------------
+
+$( 'li' ).on( 'click.logging', function() {
+  console.log( 'щёлкнули по элементу списка' );
+});
+  
+$( 'li' ).on( 'click.analytics', function() {
+  registerClick();
+  doSomethingElse();
+);
+
+$( 'li' ).off( 'click.logging' ); - отключает конкретный обработчик событий
+
+----------------
+
+var handleClick = function() {
+  console.log( 'на что-то щёлкнули' );
+};
+  
+$( 'li' ).on( 'click', handleClick );
+$( 'h1' ).on( 'click', handleClick );
+
+----------------
+
+$( document ).on( 'click', function( event ) {
+  console.log( event.type );    // Тип события, к примеру click
+  console.log( event.which );   // Нажатая кнопка или клавиша
+  console.log( event.target );  // Источник события
+  console.log( event.pageX );   // Координата мыши по оси X
+  console.log( event.pageY );   // Координата мыши по оси Y
+});
+
+----------------
+
+$( 'input' ).on( 'keydown', function( event ) {
+  // this: Элемент, с которым связан обработчик событий
+  // event: Объект события
+  // Сменить цвет фона элемента <input> при нажатии на backspace 
+  // на красный, в противном случае на зелёный
+  $( this ).css( 'background', event.which === 8 ? 'red' : 'green' );
+});
+
+----------------
+
+$( 'a' ).on( 'click', function( event ) {
+  // Отменяем действие по умолчанию
+  event.preventDefault();
+  // Выводим
+  console.log( 'По мне уже щёлкнули!' );
+});
+
+----------------
+
+<a href="#foo"><span>Я ссылка!</span></a>
+<a href="#bar"><b><i>И ты ссылка?</i></b></a>
+
+
+$( 'a' ).on( 'click', function( event ) {
+  event.preventDefault();
+  console.log( $( this ).attr( 'href' ) );
+});
+
+----------------
+
+
+
+
 
 
 

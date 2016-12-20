@@ -6,32 +6,123 @@
 	<body>
 		<h1>some text here</h1>
 		
-		<ul>
-			<li>
-			<span>
-				<i>Foo</i>
-			</span>
-			</li>
-			<li>Bar</li>
-		</ul>
+		<div>
+			<ul>
+				<li>
+				<span>
+					<i>Foo</i>
+				</span>
+				</li>
+				<li>Bar</li>
+			</ul>
 
+			
+			<script>
+				$( 'li' ).click(function( event ) {
+				console.log( 'clicked', $( this ).text() );
+				});
+			</script>
+		</div>
 		
-		<ul>
-			<li>Coffee</li>
-			<li>Tea</li>
-			<li>Milk</li>
-		</ul>
+		<div>
+			<ul>
+				<li>Coffee</li>
+				<li>Tea</li>
+				<li>Milk</li>
+			</ul>
+			<script>
+				$( 'li' ).on( 'click', function( event ) {
+				<!--console.log( 'clicked', $( this ).text() );-->
+				//$( 'li' ).off( 'click' );
+				});
+			</script>
+		</div>
+		
 
+		<!--
 		<script>
 			$( document ).ready(function() {
 			console.log( 'готов!' );
 			alert("inner function!");
 			});
 		</script>
+		-->
+		
+		<script>
+			var handleClick = function() {
+				console.log( 'на что-то щёлкнули' );
+			};
+			$( 'li' ).on( 'click', handleClick );
+			$( 'h1' ).on( 'click', handleClick );
+		</script> 
+		
+		<script>
+			$( document ).on( 'click', function( event ) {
+			console.log( event.type );    // Тип события, к примеру click
+			console.log( event.which );   // Нажатая кнопка или клавиша
+			console.log( event.target );  // Источник события
+			console.log( event.pageX );   // Координата мыши по оси X
+			console.log( event.pageY );   // Координата мыши по оси Y
+			});
+		</script> 
+		
+		<!--
+		<script>
+			$( 'input' ).on( 'keydown', function( event ) {
+			// this: Элемент, с которым связан обработчик событий
+			// event: Объект события
+			// Сменить цвет фона элемента <input> при нажатии на backspace 
+			// на красный, в противном случае на зелёный
+			$( this ).css( 'background', event.which === 8 ? 'red' : 'green' );
+			});
+		</script> 
+		-->
 		
 		<script src='my1script.js'></script>
 
 		<h3>and once again</h3>
+		
+		<script>
+			$( 'h3' ).on( 'click', function( event ) {
+			// Отменяем действие по умолчанию
+			event.preventDefault();
+			// Выводим
+			console.log( 'По мне уже щёлкнули!' );
+			});
+		</script>
+		
+		<a href="#foo"><span>Я ссылка!</span></a>
+		<a href="#bar"><b><i>И ты ссылка?</i></b></a>
+		
+		<script>
+			$( 'a' ).on( 'click', function( event ) {
+				event.preventDefault();
+				console.log( $( this ).attr( 'href' ) );
+			});
+		</script>
+		
+		<div id="1">
+			<h2>Show</h2>
+		</div>
+		
+		<div id="2">
+			<h2>Hide</h2>
+		</div>
+		
+		<script>
+			$( "#1" ).on( 'click', function( event ) {
+				$( "#2" ).show(300);
+				console.log( 'id="1" show(300)' );
+			});
+		</script>
+		
+		<script>
+			$( "#2" ).on( 'click', function( event ) {
+				$( "#2" ).hide(300);
+				console.log( 'id="2" hide(300)' );
+			});
+		</script>
+		
 	</body>
 
 </html>
